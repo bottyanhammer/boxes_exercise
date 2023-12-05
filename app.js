@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-container.innerHTML = "";
+//container.innerHTML = "";
 for (let i = 1; i < 10; i++){  
     let r = Math.floor(Math.random()*256);
     let g = Math.floor(Math.random()*256);
@@ -60,3 +60,51 @@ const disappear = (event) =>{
 }
 
 box4.addEventListener("click", disappear);
+
+// box_5 Minden legyen kör alakú!:
+const box5 = document.getElementById("5");
+
+const circularise = () => {
+    const boxes = document.querySelectorAll(".box");
+    for (box of boxes){
+        box.style.borderRadius = box.style.borderRadius === "50%" ? "" : "50%";
+        /**
+        if (box.style.borderRadius == "50%"){
+            box.style.borderRadius = "";
+        } else {
+            box.style.borderRadius = "50%";
+        }
+        */        
+    }
+}
+box5.addEventListener("click", circularise);
+
+// box_6 Kurzorpozíciók:
+const box6 = document.getElementById("6");
+document.addEventListener("mousemove", (event) => {
+    let x = event.clientX;
+    let y = event.clientY;
+    box6.style.fontSize = "1.7rem";
+    box6.innerHTML = `X:${x}<br>Y:${y}`;
+})
+
+// box_7 Number copy:
+const box7 = document.getElementById("7");
+const input7 = document.querySelector(".container2 .seven input");
+const button7 = document.querySelector(".container2 .seven button");
+
+const write = () =>{
+    box7.innerText = `${input7.value}`;
+}
+
+button7.addEventListener("click", write);
+
+// box_8: Az input mező tartalma azonnal a box8-ba íródik:
+const box8 = document.getElementById("8");
+const input8 = document.querySelector(".eight input");
+// Az "input" esemény azonnal bekövetkezik, amint az input mezőbe egy karaktert írunk.
+// A "keydown" esemény ugyanez, ám a leütött billentyűt figyeli (BÁRMILYEN billentyű legyen az).
+// A leütött billentyű kódja az esemény key attribútumában érhető el.
+input8.addEventListener("keydown", (event) =>{
+    box8.innerText = event.key;
+})
